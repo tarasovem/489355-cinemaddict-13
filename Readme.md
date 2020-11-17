@@ -1,7 +1,7 @@
 # Проект «Киноман» [![Build status][travis-image]][travis-url]
 
 * Студент: [Евгений Тарасов](https://up.htmlacademy.ru/ecmascript/13/user/489355).
-* Наставник: `Неизвестно`.
+* Наставник: [Валерий Соловьев](https://htmlacademy.ru/profile/id8640).
 
 ---
 

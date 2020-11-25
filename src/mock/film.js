@@ -329,6 +329,87 @@ const generateDescription = () => {
   return description.join(` `);
 };
 
+const generateComments = () => {
+  const MIN_COMMENTS_COUNT = 0;
+  const MAX_COMMENTS_COUNT = 5;
+  const commentsCount = getRandomInteger(MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT);
+
+  const generateComment = () => {
+    const getRandomName = () => {
+      const names = [
+        `Hercules Seale`,
+        `Valry Harder`,
+        `Rabi Fraumeni`,
+        `Ellette De costa`,
+        `Cristian Biscay`,
+        `Shel Hiney`,
+        `Gerhardt Rakkhita`,
+        `Truda Hernandez`,
+        `Damian Hickson`
+      ];
+
+      const getRandomIndex = getRandomInteger(0, names.length - 1);
+
+      return names[getRandomIndex];
+    };
+
+    const getRandomMessage = () => {
+      const messages = [
+        `Interesting setting and a good cast`,
+        `Booooooooooring`,
+        `Very very old. Meh`,
+        `Almost two hours? Seriously?`,
+        `The beauty of the sunset was obscured by the industrial cranes.`,
+        `Green should have smelled more tranquil, but somehow it just tasted rotten.`,
+        `The ants enjoyed the barbecue more than the family.`,
+        `Behind the window was a reflection that only instilled fear.`,
+        `The irony of the situation wasn't lost on anyone in the room.`,
+        `The sign said there was road work ahead so he decided to speed up.`,
+        `The book is in front of the table.`
+      ];
+
+      const randomIndex = getRandomInteger(0, messages.length - 1);
+
+      return messages[randomIndex];
+    };
+
+    const getRandomEmoji = () => {
+      const emojis = [
+        `smile`,
+        `sleeping`,
+        `puke`,
+        `angry`
+      ];
+
+      const randomIndex = getRandomInteger(0, emojis.length - 1);
+
+      return emojis[randomIndex];
+    };
+
+    return {
+      id: null,
+      author: getRandomName(),
+      date: ``,
+      time: ``,
+      message: getRandomMessage(),
+      emoji: getRandomEmoji()
+    };
+  };
+
+  if (commentsCount === 0) {
+    return [];
+  }
+
+  let resultCommentList = [];
+
+  for (let i = 0; commentsCount > resultCommentList.length; i++) {
+    resultCommentList.push(generateComment());
+    resultCommentList[i].id = i + 1;
+  }
+
+  return resultCommentList;
+};
+
 const generateAgeRating = () => {
   const ageRatings = [
     `0+`,
@@ -357,40 +438,7 @@ export const generateFilm = () => {
     genres: generateGenres(),
     rating: generateRating(),
     description: generateDescription(),
-    comments: [
-      {
-        id: 1,
-        author: `Tim Macoveev`,
-        date: `2019/12/31`,
-        time: `23:59`,
-        message: `Interesting setting and a good cast`,
-        emoji: `smile`
-      },
-      {
-        id: 2,
-        author: `John Doe`,
-        date: `2019/12/29`,
-        time: `14:08`,
-        message: `Booooooooooring`,
-        emoji: `sleeping`
-      },
-      {
-        id: 3,
-        author: `John Doe`,
-        date: `2019/12/29`,
-        time: `14:20`,
-        message: `Very very old. Meh`,
-        emoji: `puke`
-      },
-      {
-        id: 4,
-        author: `John Doe`,
-        date: `2019/12/31`,
-        time: `09:32`,
-        message: `Almost two hours? Seriously?`,
-        emoji: `angry`
-      }
-    ],
+    comments: generateComments(),
     isAddedToWatchlist: getRandomInteger(),
     isWatched: getRandomInteger(),
     isFavorite: getRandomInteger(),

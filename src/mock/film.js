@@ -212,8 +212,8 @@ const generateCreationDate = () => {
   date.set(`day`, getRandomDay());
   date.set(`month`, getMonthName(date.get(`month`)));
 
-  date.forEach(function (value) {
-    String(value);
+  date.forEach(function (value, key, map) {
+    map.set(key, String(value));
   });
 
   return date;
@@ -329,6 +329,20 @@ const generateDescription = () => {
   return description.join(` `);
 };
 
+const generateAgeRating = () => {
+  const ageRatings = [
+    `0+`,
+    `6+`,
+    `12+`,
+    `16+`,
+    `18+`
+  ];
+
+  const randomIndex = getRandomInteger(0, ageRatings.length - 1);
+
+  return ageRatings[randomIndex];
+};
+
 export const generateFilm = () => {
   return {
     title: generateTitle(),
@@ -377,9 +391,9 @@ export const generateFilm = () => {
         emoji: `angry`
       }
     ],
-    isAddedToWatchlist: false,
-    isWatched: true,
-    isFavorite: false,
-    age: `18+`
+    isAddedToWatchlist: getRandomInteger(),
+    isWatched: getRandomInteger(),
+    isFavorite: getRandomInteger(),
+    ageRating: generateAgeRating()
   };
 };

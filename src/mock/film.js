@@ -49,23 +49,14 @@ const generatePosterURL = () => {
   return `./images/posters/${postersName[randomIndex]}`;
 };
 
-const generateDirector = () => {
-  const directors = [
+const generateNames = (amount = 1) => {
+  const names = [
     `Anthony Mann`,
     `Danna Kolleen`,
     `Sheridan Edison`,
     `Bryant Graham`,
     `Leroi Karson`,
-    `Carlisle Sonnie`
-  ];
-
-  const randomIndex = getRandomInteger(0, directors.length - 1);
-
-  return directors[randomIndex];
-};
-
-const generateWriters = () => {
-  const writers = [
+    `Carlisle Sonnie`,
     `Arlene Bryant`,
     `Aubrie Warrick`,
     `Sonya Audra`,
@@ -80,7 +71,49 @@ const generateWriters = () => {
     `Shelagh Kacie`,
     `Mackenzie Shanae`,
     `Gillian Chuck`,
-    `Elfreda Breanne`
+    `Elfreda Breanne`,
+    `Abby Kelda`,
+    `Pam Warner`,
+    `Piper Gordon`,
+    `Lawrence Flick`,
+    `Annmarie Benson`,
+    `Miranda Emelia`,
+    `Bernard Ridge`,
+    `Bettie Nigella`,
+    `Orville Emily`,
+    `Jayme Jaiden`,
+    `Leigh Cyprian`,
+    `Yolanda Ollie`,
+    `Julianna Watson`,
+    `Mort Grosvenor`,
+    `Dena Joisse`,
+    `Hercules Seale`,
+    `Valry Harder`,
+    `Rabi Fraumeni`,
+    `Ellette De costa`,
+    `Cristian Biscay`,
+    `Shel Hiney`,
+    `Gerhardt Rakkhita`,
+    `Truda Hernandez`,
+    `Damian Hickson`
+  ];
+
+  const resultLength = getRandomInteger(1, amount);
+
+  let result = [];
+
+  for (let i = 0; result.length > resultLength; i++) {
+    let randomIndex = getRandomInteger(0, amount.length - 1);
+    let item = names.splice(randomIndex, 1);
+    result = [...result, ...item];
+  }
+
+  return result;
+};
+
+const generateWriters = () => {
+  const writers = [
+
   ];
 
   const MIN_WRITERS_NUMBER = 1;
@@ -100,21 +133,7 @@ const generateWriters = () => {
 
 const generateActors = () => {
   const actors = [
-    `Abby Kelda`,
-    `Pam Warner`,
-    `Piper Gordon`,
-    `Lawrence Flick`,
-    `Annmarie Benson`,
-    `Miranda Emelia`,
-    `Bernard Ridge`,
-    `Bettie Nigella`,
-    `Orville Emily`,
-    `Jayme Jaiden`,
-    `Leigh Cyprian`,
-    `Yolanda Ollie`,
-    `Julianna Watson`,
-    `Mort Grosvenor`,
-    `Dena Joisse`
+
   ];
 
   const MIN_ACTORS_NUMBER = 1;

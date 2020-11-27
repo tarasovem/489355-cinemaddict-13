@@ -111,46 +111,6 @@ const generateNames = (amount = 1) => {
   return result;
 };
 
-const generateWriters = () => {
-  const writers = [
-
-  ];
-
-  const MIN_WRITERS_NUMBER = 1;
-  const MAX_WRITERS_NUMBER = 3;
-
-  const writersNumber = getRandomInteger(MIN_WRITERS_NUMBER, MAX_WRITERS_NUMBER);
-
-  const writersList = new Set();
-
-  for (let i = 0; writersNumber > writersList.size; i++) {
-    const randomIndex = getRandomInteger(0, writers.length - 1);
-    writersList.add(writers[randomIndex]);
-  }
-
-  return writersList;
-};
-
-const generateActors = () => {
-  const actors = [
-
-  ];
-
-  const MIN_ACTORS_NUMBER = 1;
-  const MAX_ACTORS_NUMBER = 3;
-
-  const actorsNumber = getRandomInteger(MIN_ACTORS_NUMBER, MAX_ACTORS_NUMBER);
-
-  const actorsList = new Set();
-
-  for (let i = 0; actorsNumber > actorsList.size; i++) {
-    const randomIndex = getRandomInteger(0, actors.length - 1);
-    actorsList.add(actors[randomIndex]);
-  }
-
-  return actorsList;
-};
-
 const generateCreationDate = () => {
   const date = new Map();
 
@@ -348,24 +308,6 @@ const generateComments = () => {
   const commentsCount = getRandomInteger(MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT);
 
   const generateComment = () => {
-    const getRandomName = () => {
-      const names = [
-        `Hercules Seale`,
-        `Valry Harder`,
-        `Rabi Fraumeni`,
-        `Ellette De costa`,
-        `Cristian Biscay`,
-        `Shel Hiney`,
-        `Gerhardt Rakkhita`,
-        `Truda Hernandez`,
-        `Damian Hickson`
-      ];
-
-      const getRandomIndex = getRandomInteger(0, names.length - 1);
-
-      return names[getRandomIndex];
-    };
-
     const getRandomMessage = () => {
       const messages = [
         `Interesting setting and a good cast`,
@@ -401,7 +343,7 @@ const generateComments = () => {
 
     return {
       id: null,
-      author: getRandomName(),
+      author: generateNames(),
       date: ``,
       time: ``,
       message: getRandomMessage(),
@@ -442,9 +384,9 @@ export const generateFilm = () => {
     title: generateTitle(),
     titleOriginal: generateOriginTitle(),
     posterURL: generatePosterURL(),
-    director: generateDirector(),
-    writers: generateWriters(),
-    actors: generateActors(),
+    director: generateNames(),
+    writers: generateNames(3),
+    actors: generateNames(3),
     createDate: generateCreationDate(),
     country: generateCountry(),
     duration: generateDuration(),

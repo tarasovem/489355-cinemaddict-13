@@ -13,6 +13,9 @@ const TITLES = [
   `Popeye the Sailor Meets Sindbad the Sailor`
 ];
 
+const MIN_RATING = 1;
+const MAX_RATING = 10;
+
 const getRandomElementOfArray = (arr) => {
   const randomIndex = getRandomInteger(0, arr.length - 1);
 
@@ -35,14 +38,6 @@ const getRandomElementsOfArray = (maxAmount, arr) => {
     });
 
   return result;
-};
-
-const generateTitle = () => {
-  const titles = ;
-
-  const randomIndex = getRandomInteger(0, titles.length - 1);
-
-  return titles[randomIndex];
 };
 
 const generateOriginTitle = () => {
@@ -287,14 +282,7 @@ const generateGenres = () => {
   return genresList;
 };
 
-const generateRating = () => {
-  const MIN_RATING = 10;
-  const MAX_RATING = 100;
-
-  const randomRating = getRandomInteger(MIN_RATING, MAX_RATING) / 10;
-
-  return String(randomRating.toFixed(1));
-};
+const getRandomRating = () => getRandomInteger(MIN_RATING * 10, MAX_RATING * 10) / 10;
 
 const generateDescription = () => {
   const sentences = [
@@ -407,7 +395,7 @@ const generateAgeRating = () => {
 
 export const generateFilm = () => {
   return {
-    title: generateTitle(),
+    title: getRandomElementOfArray(TITLES),
     titleOriginal: generateOriginTitle(),
     posterURL: generatePosterURL(),
     director: generateNames(),

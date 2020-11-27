@@ -5,12 +5,6 @@ const getRandomInteger = (a = 0, b = 1) => {
   return Math.floor(lower + Math.random() * (upper - lower + 1));
 };
 
-const getRandomNumber = (a = 0, b = 1) => {
-  const lower = Math.min(a, b);
-  const upper = Math.max(a, b);
-  return lower + Math.random() * (upper - lower);
-};
-
 const generateTitle = () => {
   const titles = [
     `The Dance of Life`,
@@ -289,10 +283,10 @@ const generateGenres = () => {
 };
 
 const generateRating = () => {
-  const MIN_RATING = 0;
-  const MAX_RATING = 10;
+  const MIN_RATING = 10;
+  const MAX_RATING = 100;
 
-  const randomRating = getRandomNumber(MIN_RATING, MAX_RATING);
+  const randomRating = getRandomInteger(MIN_RATING, MAX_RATING) / 10;
 
   return String(randomRating.toFixed(1));
 };

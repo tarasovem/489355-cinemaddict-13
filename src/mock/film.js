@@ -5,14 +5,40 @@ const getRandomInteger = (a = 0, b = 1) => {
   return Math.floor(lower + Math.random() * (upper - lower + 1));
 };
 
+const TITLES = [
+  `The Dance of Life`,
+  `Sagebrush Trail`,
+  `The Man with the Golden Arm`,
+  `Santa Claus Conquers the Martians`,
+  `Popeye the Sailor Meets Sindbad the Sailor`
+];
+
+const getRandomElementOfArray = (arr) => {
+  const randomIndex = getRandomInteger(0, arr.length - 1);
+
+  return arr[randomIndex];
+};
+
+const getRandomElementsOfArray = (maxAmount, arr) => {
+  if (maxAmount > arr.length) {
+    throw 'Максимальная величина превышает длину списка!'
+  }
+  const elements = arr.slice();
+  const randomAmount = getRandomInteger(1, maxAmount);
+  const result = new Array(randomAmount)
+    .fill(undefined)
+    .map(function () {
+      const randomIndex = getRandomInteger(0, elements.length -1);
+      const [item] = elements.splice(randomIndex, 1);
+
+      return item;
+    });
+
+  return result;
+};
+
 const generateTitle = () => {
-  const titles = [
-    `The Dance of Life`,
-    `Sagebrush Trail`,
-    `The Man with the Golden Arm`,
-    `Santa Claus Conquers the Martians`,
-    `Popeye the Sailor Meets Sindbad the Sailor`
-  ];
+  const titles = ;
 
   const randomIndex = getRandomInteger(0, titles.length - 1);
 

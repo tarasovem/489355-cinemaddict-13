@@ -23,26 +23,21 @@ const render = (container, template, place) => {
 };
 
 const mainHeaderElement = document.querySelector(`.header`);
-
 render(mainHeaderElement, profileRatingTemplate(), `beforeend`);
 
 const mainElement = document.querySelector(`.main`);
-
 render(mainElement, menuTemplate(filmsList), `beforeend`);
 render(mainElement, films(), `beforeend`);
 
 const filmsElement = document.querySelector(`.films`);
-
 render(filmsElement, commonFilmsListTemplate(), `beforeend`);
 
 const filmsListContainerElement = document.querySelector(`.films-list__container`);
-
 for (let i = 0; i < Math.min(filmsList.length, FILM_COUNT_PER_STEP); i++) {
   render(filmsListContainerElement, filmCardTemplate(filmsList[i]), `beforeend`);
 }
 
 const filmsListElement = document.querySelector(`.films-list`);
-
 if (filmsList.length > FILM_COUNT_PER_STEP) {
   let renderFilmCount = FILM_COUNT_PER_STEP;
 
@@ -63,20 +58,15 @@ if (filmsList.length > FILM_COUNT_PER_STEP) {
     }
   });
 }
-
 render(filmsElement, topRatedFilmsListTemplate(), `beforeend`);
 
 const topRatedFilmsContainerElement = document.querySelector(`.films-list--extra .films-list__container`);
-
 for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
   render(topRatedFilmsContainerElement, filmCardTemplate(topRatedFilmsList[i]), `beforeend`);
 }
-
 render(filmsElement, mostCommentedFilmsListTemplate(), `beforeend`);
 
 const mostCommentedFilmsContainerElement = document.querySelector(`.films-list--extra:last-of-type .films-list__container`);
-
-
 for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
   render(mostCommentedFilmsContainerElement, filmCardTemplate(mostCommentedFilmsList[i]), `beforeend`);
 }

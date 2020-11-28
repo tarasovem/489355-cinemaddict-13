@@ -30,7 +30,7 @@ const getRandomElementsOfArray = (maxAmount, arr) => {
 
 const getRandomDateTime = (from) => {
   const unixFrom = dayjs(from).unix();
-  const unixTo = dayjs().unix();
+  const unixTo = new Date().getTime();
 
   return getRandomInteger(unixFrom, unixTo);
 };

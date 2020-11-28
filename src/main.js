@@ -7,9 +7,12 @@ import {showMoreButtonTemplate} from "./view/show-more-button";
 import {topRatedFilmsListTemplate} from "./view/top-rated-films-list";
 import {mostCommentedFilmsListTemplate} from "./view/most-commented-films-list";
 import {filmDetailsTemplate} from "./view/film-details";
+import {generateFilm} from "./mock/film";
 
 const FILM_COUNT = 5;
 const EXTRA_FILM_COUNT = 2;
+
+const filmsList = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
@@ -31,7 +34,7 @@ render(filmsElement, commonFilmsListTemplate(), `beforeend`);
 const filmsListContainerElement = document.querySelector(`.films-list__container`);
 
 for (let i = 0; i < FILM_COUNT; i++) {
-  render(filmsListContainerElement, filmCardTemplate(), `beforeend`);
+  render(filmsListContainerElement, filmCardTemplate(filmsList[i]), `beforeend`);
 }
 
 const filmsListElement = document.querySelector(`.films-list`);
@@ -43,7 +46,7 @@ render(filmsElement, topRatedFilmsListTemplate(), `beforeend`);
 const topRatedFilmsContainerElement = document.querySelector(`.films-list--extra .films-list__container`);
 
 for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
-  render(topRatedFilmsContainerElement, filmCardTemplate(), `beforeend`);
+  render(topRatedFilmsContainerElement, filmCardTemplate(filmsList[i]), `beforeend`);
 }
 
 render(filmsElement, mostCommentedFilmsListTemplate(), `beforeend`);
@@ -52,7 +55,7 @@ const mostCommentedFilmsContainerElement = document.querySelector(`.films-list--
 
 
 for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
-  render(mostCommentedFilmsContainerElement, filmCardTemplate(), `beforeend`);
+  render(mostCommentedFilmsContainerElement, filmCardTemplate(filmsList[i]), `beforeend`);
 }
 
 const mainFooterElement = document.querySelector(`.footer`);

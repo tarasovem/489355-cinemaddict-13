@@ -7,6 +7,7 @@ import {showMoreButtonTemplate} from "./view/show-more-button";
 import {topRatedFilmsListTemplate} from "./view/top-rated-films-list";
 import {mostCommentedFilmsListTemplate} from "./view/most-commented-films-list";
 import {filmDetailsTemplate} from "./view/film-details";
+import {footerStatsTemplate} from "./view/footer-stats";
 import {generateFilm} from "./mock/film";
 
 const FILM_COUNT = 20;
@@ -80,6 +81,8 @@ for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
   render(mostCommentedFilmsContainerElement, filmCardTemplate(mostCommentedFilmsList[i]), `beforeend`);
 }
 
-/*const mainFooterElement = document.querySelector(`.footer`);
+const mainFooterElement = document.querySelector(`.footer`);
+render(mainFooterElement, filmDetailsTemplate(filmsList[0]), `afterend`);
 
-render(mainFooterElement, filmDetailsTemplate(filmsList[0]), `afterend`);*/
+const footerStatistics = mainFooterElement.querySelector(`.footer__statistics`);
+render(footerStatistics, footerStatsTemplate(130291), `beforeend`);

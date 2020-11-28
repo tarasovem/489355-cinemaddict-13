@@ -13,6 +13,7 @@ import {generateFilm} from "./mock/film";
 const FILM_COUNT = 20;
 const FILM_COUNT_PER_STEP = 5;
 const EXTRA_FILM_COUNT = 2;
+const TOTAL_FILM_COUNT = 130291;
 
 const filmsList = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
 const topRatedFilmsList = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
@@ -75,4 +76,4 @@ const mainFooterElement = document.querySelector(`.footer`);
 render(mainFooterElement, filmDetailsTemplate(filmsList[0]), `afterend`);
 
 const footerStatistics = mainFooterElement.querySelector(`.footer__statistics`);
-render(footerStatistics, footerStatsTemplate(130291), `beforeend`);
+render(footerStatistics, footerStatsTemplate(TOTAL_FILM_COUNT), `beforeend`);

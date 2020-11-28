@@ -56,7 +56,7 @@ const getRandomComments = (min, max) => {
   const randomAmount = getRandomInteger(min, max);
   const result = new Array(randomAmount)
     .fill(undefined)
-    .map(function () {
+    .map(() => {
       return getRandomComment();
     });
   return result;

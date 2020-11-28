@@ -13,6 +13,8 @@ const FILM_COUNT = 5;
 const EXTRA_FILM_COUNT = 2;
 
 const filmsList = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
+const topRatedFilmsList = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
+const mostCommentedFilmsList = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);
@@ -46,7 +48,7 @@ render(filmsElement, topRatedFilmsListTemplate(), `beforeend`);
 const topRatedFilmsContainerElement = document.querySelector(`.films-list--extra .films-list__container`);
 
 for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
-  render(topRatedFilmsContainerElement, filmCardTemplate(filmsList[i]), `beforeend`);
+  render(topRatedFilmsContainerElement, filmCardTemplate(topRatedFilmsList[i]), `beforeend`);
 }
 
 render(filmsElement, mostCommentedFilmsListTemplate(), `beforeend`);
@@ -55,7 +57,7 @@ const mostCommentedFilmsContainerElement = document.querySelector(`.films-list--
 
 
 for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
-  render(mostCommentedFilmsContainerElement, filmCardTemplate(filmsList[i]), `beforeend`);
+  render(mostCommentedFilmsContainerElement, filmCardTemplate(mostCommentedFilmsList[i]), `beforeend`);
 }
 
 const mainFooterElement = document.querySelector(`.footer`);

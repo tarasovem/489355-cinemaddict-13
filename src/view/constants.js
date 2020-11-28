@@ -142,6 +142,30 @@ const AGE_RATINGS = [
   `18+`
 ];
 
+const MESSAGES = [
+  `Interesting setting and a good cast`,
+  `Booooooooooring`,
+  `Very very old. Meh`,
+  `Almost two hours? Seriously?`,
+  `The beauty of the sunset was obscured by the industrial cranes.`,
+  `Green should have smelled more tranquil, but somehow it just tasted rotten.`,
+  `The ants enjoyed the barbecue more than the family.`,
+  `Behind the window was a reflection that only instilled fear.`,
+  `The irony of the situation wasn't lost on anyone in the room.`,
+  `The sign said there was road work ahead so he decided to speed up.`,
+  `The book is in front of the table.`
+];
+
+const EMOJIS = [
+  `smile`,
+  `sleeping`,
+  `puke`,
+  `angry`
+];
+
+const MIN_COMMENTS_COUNT = 0;
+const MAX_COMMENTS_COUNT = 5;
+
 export {
   TITLES,
   ORIGIN_TITLES,
@@ -160,5 +184,9 @@ export {
   MAX_RATING,
   SENTENCES,
   MAX_SENTENCES,
-  AGE_RATINGS
+  AGE_RATINGS,
+  MESSAGES,
+  EMOJIS,
+  MIN_COMMENTS_COUNT,
+  MAX_COMMENTS_COUNT
 };

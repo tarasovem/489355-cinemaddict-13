@@ -16,7 +16,11 @@ import {
   MAX_RATING,
   SENTENCES,
   MAX_SENTENCES,
-  AGE_RATINGS
+  AGE_RATINGS,
+  MESSAGES,
+  EMOJIS,
+  MIN_COMMENTS_COUNT,
+  MAX_COMMENTS_COUNT
 } from '../view/constants.js';
 import {
   getRandomInteger,
@@ -24,6 +28,7 @@ import {
   getRandomElementsOfArray,
   getRandomDateTime
 } from './utils.js';
+import {nanoid} from 'nanoid';
 
 
 const getRandomDuration = (min, max) => {
@@ -38,67 +43,24 @@ const getRandomDescription = () => {
   return sentencesList.join(` `);
 };
 
-const generateComment = () => {
-  const getRandomMessage = () => {
-    const messages = [
-      `Interesting setting and a good cast`,
-      `Booooooooooring`,
-      `Very very old. Meh`,
-      `Almost two hours? Seriously?`,
-      `The beauty of the sunset was obscured by the industrial cranes.`,
-      `Green should have smelled more tranquil, but somehow it just tasted rotten.`,
-      `The ants enjoyed the barbecue more than the family.`,
-      `Behind the window was a reflection that only instilled fear.`,
-      `The irony of the situation wasn't lost on anyone in the room.`,
-      `The sign said there was road work ahead so he decided to speed up.`,
-      `The book is in front of the table.`
-    ];
-
-    const randomIndex = getRandomInteger(0, messages.length - 1);
-
-    return messages[randomIndex];
-  };
-
-  const getRandomEmoji = () => {
-    const emojis = [
-      `smile`,
-      `sleeping`,
-      `puke`,
-      `angry`
-    ];
-
-    const randomIndex = getRandomInteger(0, emojis.length - 1);
-
-    return emojis[randomIndex];
-  };
-
+const getRandomComment = () => {
   return {
-    id: null,
-    author: generateNames(),
-    date: ``,
-    message: getRandomMessage(),
-    emoji: getRandomEmoji()
+    id: nanoid(),
+    author: getRandomElementOfArray(NAMES),
+    dateTime: getRandomDateTime(FIRST_FILM_DATE),
+    message: getRandomElementOfArray(MESSAGES),
+    emoji: getRandomElementOfArray(EMOJIS)
   };
 };
 
-const generateComments = () => {
-  const MIN_COMMENTS_COUNT = 0;
-  const MAX_COMMENTS_COUNT = 5;
-  const commentsCount = getRandomInteger(MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT);
-
-
-  if (commentsCount === 0) {
-    return [];
-  }
-
-  let resultCommentList = [];
-
-  for (let i = 0; commentsCount > resultCommentList.length; i++) {
-    resultCommentList.push(generateComment());
-    resultCommentList[i].id = i + 1;
-  }
-
-  return resultCommentList;
+const getRandomComments = (min, max) => {
+  const randomAmount = getRandomInteger(min, max);
+  const result = new Array(randomAmount)
+    .fill(undefined)
+    .map(function () {
+      return getRandomComment();
+    });
+  return result;
 };
 
 export const generateFilm = () => {
@@ -115,7 +77,7 @@ export const generateFilm = () => {
     genres: getRandomElementsOfArray(MAX_GENRES_COUNT, GENRES),
     rating: getRandomRating(),
     description: getRandomDescription(),
-    comments: generateComments(),
+    comments: getRandomComments(MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT),
     isAddedToWatchlist: Boolean(getRandomInteger()),
     isWatched: Boolean(getRandomInteger()),
     isFavorite: Boolean(getRandomInteger()),

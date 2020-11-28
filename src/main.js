@@ -27,7 +27,7 @@ render(mainHeaderElement, profileRatingTemplate(), `beforeend`);
 
 const mainElement = document.querySelector(`.main`);
 
-render(mainElement, menuTemplate(), `beforeend`);
+render(mainElement, menuTemplate(filmsList), `beforeend`);
 render(mainElement, films(), `beforeend`);
 
 const filmsElement = document.querySelector(`.films`);
@@ -80,6 +80,6 @@ for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
   render(mostCommentedFilmsContainerElement, filmCardTemplate(mostCommentedFilmsList[i]), `beforeend`);
 }
 
-const mainFooterElement = document.querySelector(`.footer`);
+/*const mainFooterElement = document.querySelector(`.footer`);
 
-render(mainFooterElement, filmDetailsTemplate(filmsList[0]), `afterend`);
+render(mainFooterElement, filmDetailsTemplate(filmsList[0]), `afterend`);*/

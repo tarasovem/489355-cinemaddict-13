@@ -35,7 +35,7 @@ const getRandomDuration = (min, max) => {
   return getRandomInteger(min, max);
 };
 
-const getRandomRating = () => getRandomInteger(MIN_RATING * 10, MAX_RATING * 10) / 10;
+const getRandomRating = () => (getRandomInteger(MIN_RATING * 10, MAX_RATING * 10) / 10).toFixed(1);
 
 const getRandomDescription = () => {
   const sentencesList = getRandomElementsOfArray(MAX_SENTENCES, SENTENCES);

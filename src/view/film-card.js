@@ -1,13 +1,9 @@
+import {getFilmDuration} from '../mock/utils';
+
 export const filmCardTemplate = (film) => {
   const {title, rating, creationDateTime, duration, genres, posterFileName, description, comments, isAddedToWatchlist, isWatched, isFavorite} = film;
 
   const yearOfCreation = new Date(creationDateTime).getFullYear();
-
-  const filmDuration = () => {
-    const minutes = duration % 60;
-    const hours = (duration - minutes) / 60;
-    return `${hours}h ${minutes}m`;
-  };
 
   const activeClass = `film-card__controls-item--active`;
 
@@ -22,7 +18,7 @@ export const filmCardTemplate = (film) => {
     <p class="film-card__rating">${rating}</p>
     <p class="film-card__info">
       <span class="film-card__year">${yearOfCreation}</span>
-      <span class="film-card__duration">${filmDuration()}</span>
+      <span class="film-card__duration">${getFilmDuration(duration)}</span>
       <span class="film-card__genre">${genres[0]}</span>
     </p>
     <img src="./images/posters/${posterFileName}" alt="" class="film-card__poster">

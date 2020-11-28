@@ -35,9 +35,26 @@ const getRandomDateTime = (from) => {
   return getRandomInteger(unixFrom, unixTo);
 };
 
+const getMonthName = (monthIndex) => {
+  const months = [
+    `January`, `February`, `March`, `April`, `May`,
+    `June`, `July`, `August`, `September`, `October`,
+    `November`, `December`
+  ];
+  return months[monthIndex];
+};
+
+const getFilmDuration = (duration) => {
+  const minutes = duration % 60;
+  const hours = (duration - minutes) / 60;
+  return `${hours}h ${minutes}m`;
+};
+
 export {
   getRandomInteger,
   getRandomElementOfArray,
   getRandomElementsOfArray,
-  getRandomDateTime
+  getRandomDateTime,
+  getMonthName,
+  getFilmDuration
 };

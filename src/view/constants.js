@@ -106,13 +106,13 @@ const GENRES = [
   `Musicals`,
   `Horror`,
   `Crime`,
-  `Romantic Comedy`,
+  `Comedy`,
   `Drama`,
   `Fantasy`,
   `Animation`,
   `Historical`,
-  `Science fiction`,
-  `Action Adventure`
+  `Sci-fi`,
+  `Adventure`
 ];
 const MAX_GENRES_COUNT = 3;
 

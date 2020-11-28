@@ -1,7 +1,6 @@
 import {
   TITLES,
   ORIGIN_TITLES,
-  POSTER_FOLDER,
   POSTER_FILE_NAMES,
   NAMES,
   MAX_WRITERS_COUNT,
@@ -67,7 +66,7 @@ export const generateFilm = () => {
   return {
     title: getRandomElementOfArray(TITLES),
     titleOriginal: getRandomElementOfArray(ORIGIN_TITLES),
-    posterURL: `${POSTER_FOLDER}${getRandomElementOfArray(POSTER_FILE_NAMES)}`,
+    posterFileName: getRandomElementOfArray(POSTER_FILE_NAMES),
     director: getRandomElementOfArray(NAMES),
     writers: getRandomElementsOfArray(MAX_WRITERS_COUNT, NAMES),
     actors: getRandomElementsOfArray(MAX_ACTORS_COUNT, NAMES),

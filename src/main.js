@@ -60,4 +60,4 @@ for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
 
 const mainFooterElement = document.querySelector(`.footer`);
 
-render(mainFooterElement, filmDetailsTemplate(), `afterend`);
+// render(mainFooterElement, filmDetailsTemplate(), `afterend`);

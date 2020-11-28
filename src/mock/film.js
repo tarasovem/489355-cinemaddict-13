@@ -71,7 +71,7 @@ export const generateFilm = () => {
     director: getRandomElementOfArray(NAMES),
     writers: getRandomElementsOfArray(MAX_WRITERS_COUNT, NAMES),
     actors: getRandomElementsOfArray(MAX_ACTORS_COUNT, NAMES),
-    createDate: getRandomDateTime(FIRST_FILM_DATE),
+    creationDateTime: getRandomDateTime(FIRST_FILM_DATE),
     country: getRandomElementOfArray(COUNTRIES),
     duration: getRandomDuration(MIN_DURATION, MAX_DURATION),
     genres: getRandomElementsOfArray(MAX_GENRES_COUNT, GENRES),

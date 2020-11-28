@@ -18,7 +18,7 @@ const getRandomElementsOfArray = (maxAmount, arr) => {
   const randomAmount = getRandomInteger(1, maxAmount);
   const result = new Array(randomAmount)
     .fill(undefined)
-    .map(function () {
+    .map(() => {
       const randomIndex = getRandomInteger(0, elements.length - 1);
       const [item] = elements.splice(randomIndex, 1);
 

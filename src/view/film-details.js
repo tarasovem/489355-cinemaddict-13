@@ -20,19 +20,14 @@ const getGenresListTemplate = (genresList) => {
   return list.join(``);
 };
 
-const getCommentsListTemplate = (comments) => {
+const getCommentsListTemplate = (commentsList) => {
   const list = [];
   const convertDateTime = (timestamp) => {
-    const year = new Date(timestamp).getFullYear();
-    const month = new Date(timestamp).getMonth() + 1;
-    const day = new Date(timestamp).getDate();
-    const hours = new Date(timestamp).getHours();
-    const minutes = new Date(timestamp).getMinutes();
-
-    return `${year}/${month}/${day} ${hours}:${minutes}`;
+    const dayjsObj = dayjs(timestamp);
+    return `${dayjsObj.year()}/${dayjsObj.month() + 1}/${dayjsObj.date()} ${dayjsObj.hour()}:${dayjsObj.minute()}`;
   };
 
-  for (let comment of comments) {
+  for (let comment of commentsList) {
     const template = `
       <li class="film-details__comment">
         <span class="film-details__comment-emoji">

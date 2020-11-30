@@ -1,59 +1,61 @@
+import dayjs from "dayjs";
 import {getMonthName, getFilmDuration} from "../mock/utils";
+
+const getReleaseDate = (creationDate) => {
+  const dayjsObj = dayjs(creationDate);
+  const date = dayjsObj.date();
+  const month = dayjsObj.month() + 1;
+  const year = dayjsObj.year();
+
+  return `${date} ${getMonthName(month)} ${year}`;
+};
+
+const getGenresListTemplate = (genres) => {
+  const list = [];
+
+  for (let genre of genres) {
+    const template = `<span class="film-details__genre">${genre}</span>`;
+    list.push(template);
+  }
+
+  return list.join(``);
+};
+
+const getCommentsListTemplate = (comments) => {
+  const list = [];
+  const convertDateTime = (timestamp) => {
+    const year = new Date(timestamp).getFullYear();
+    const month = new Date(timestamp).getMonth() + 1;
+    const day = new Date(timestamp).getDate();
+    const hours = new Date(timestamp).getHours();
+    const minutes = new Date(timestamp).getMinutes();
+
+    return `${year}/${month}/${day} ${hours}:${minutes}`;
+  };
+
+  for (let comment of comments) {
+    const template = `
+      <li class="film-details__comment">
+        <span class="film-details__comment-emoji">
+          <img src="./images/emoji/${comment.emoji}.png" width="55" height="55" alt="emoji-smile">
+        </span>
+        <div>
+          <p class="film-details__comment-text">${comment.message}</p>
+          <p class="film-details__comment-info">
+            <span class="film-details__comment-author">${comment.author}</span>
+            <span class="film-details__comment-day">${convertDateTime(comment.dateTime)}</span>
+            <button class="film-details__comment-delete">Delete</button>
+          </p>
+        </div>
+      </li>`;
+    list.push(template);
+  }
+
+  return list.join(``);
+};
 
 export const filmDetailsTemplate = (film) => {
   const {ageRating, title, titleOriginal, rating, director, writers, actors, creationDateTime, duration, country, genres, description, isAddedToWatchlist, isWatched, isFavorite, comments} = film;
-
-  const releaseDate = () => {
-    const day = new Date(creationDateTime).getDate();
-    const month = new Date(creationDateTime).getMonth() + 1;
-    const year = new Date(creationDateTime).getFullYear();
-
-    return `${day} ${getMonthName(month)} ${year}`;
-  };
-
-  const getGenresListTemplate = () => {
-    const list = [];
-
-    for (let genre of genres) {
-      const template = `<span class="film-details__genre">${genre}</span>`;
-      list.push(template);
-    }
-
-    return list.join(``);
-  };
-
-  const getCommentsListTemplate = () => {
-    const list = [];
-    const convertDateTime = (timestamp) => {
-      const year = new Date(timestamp).getFullYear();
-      const month = new Date(timestamp).getMonth() + 1;
-      const day = new Date(timestamp).getDate();
-      const hours = new Date(timestamp).getHours();
-      const minutes = new Date(timestamp).getMinutes();
-
-      return `${year}/${month}/${day} ${hours}:${minutes}`;
-    };
-
-    for (let comment of comments) {
-      const template = `
-        <li class="film-details__comment">
-          <span class="film-details__comment-emoji">
-            <img src="./images/emoji/${comment.emoji}.png" width="55" height="55" alt="emoji-smile">
-          </span>
-          <div>
-            <p class="film-details__comment-text">${comment.message}</p>
-            <p class="film-details__comment-info">
-              <span class="film-details__comment-author">${comment.author}</span>
-              <span class="film-details__comment-day">${convertDateTime(comment.dateTime)}</span>
-              <button class="film-details__comment-delete">Delete</button>
-            </p>
-          </div>
-        </li>`;
-      list.push(template);
-    }
-
-    return list.join(``);
-  };
 
   return `<section class="film-details">
   <form class="film-details__inner" action="" method="get">
@@ -95,7 +97,7 @@ export const filmDetailsTemplate = (film) => {
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Release Date</td>
-              <td class="film-details__cell">${releaseDate()}</td>
+              <td class="film-details__cell">${getReleaseDate(creationDateTime)}</td>
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Runtime</td>
@@ -107,7 +109,7 @@ export const filmDetailsTemplate = (film) => {
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Genres</td>
-              <td class="film-details__cell">${getGenresListTemplate()}</td>
+              <td class="film-details__cell">${getGenresListTemplate(genres)}</td>
             </tr>
           </table>
 
@@ -131,7 +133,7 @@ export const filmDetailsTemplate = (film) => {
       <section class="film-details__comments-wrap">
         <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">${comments.length}</span></h3>
 
-        <ul class="film-details__comments-list">${getCommentsListTemplate()}</ul>
+        <ul class="film-details__comments-list">${getCommentsListTemplate(comments)}</ul>
 
         <div class="film-details__new-comment">
           <div class="film-details__add-emoji-label"></div>

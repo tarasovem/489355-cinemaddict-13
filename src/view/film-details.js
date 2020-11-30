@@ -10,12 +10,11 @@ const getReleaseDate = (creationDate) => {
   return `${date} ${getMonthName(month)} ${year}`;
 };
 
-const getGenresListTemplate = (genres) => {
+const getGenresListTemplate = (genresList) => {
   const list = [];
 
-  for (let genre of genres) {
-    const template = `<span class="film-details__genre">${genre}</span>`;
-    list.push(template);
+  for (let genre of genresList) {
+    list.push(`<span class="film-details__genre">${genre}</span>`);
   }
 
   return list.join(``);

@@ -1,13 +1,5 @@
 const getCount = (list, condition) => {
-  let count = 0;
-
-  for (const item of list) {
-    if (item[condition]) {
-      count += 1;
-    }
-  }
-
-  return count;
+  return list.reduce((total, item) => total + Number(item[condition]), 0);
 };
 
 export const menuTemplate = (films) => {

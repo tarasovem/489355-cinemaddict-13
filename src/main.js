@@ -10,7 +10,7 @@ import {filmDetailsTemplate} from "./view/film-details";
 import {footerStatsTotal} from "./view/footer-stats";
 import {generateFilm} from "./mock/film";
 
-const FILM_COUNT = 123123;
+const FILM_COUNT = 25;
 const FILM_COUNT_PER_STEP = 5;
 const EXTRA_FILM_COUNT = 2;
 
@@ -72,7 +72,7 @@ for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
 }
 
 const mainFooterElement = document.querySelector(`.footer`);
-render(mainFooterElement, filmDetailsTemplate(filmsList[0]), `afterend`);
+// render(mainFooterElement, filmDetailsTemplate(filmsList[0]), `afterend`);
 
 const footerStatistics = mainFooterElement.querySelector(`.footer__statistics`);
 render(footerStatistics, footerStatsTotal(FILM_COUNT), `beforeend`);

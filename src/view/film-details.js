@@ -11,12 +11,9 @@ const getReleaseDate = (creationDate) => {
 };
 
 const getGenresListTemplate = (genresList) => {
-  return new Array(genresList.length)
-    .fill(undefined)
-    .map((value, index) => {
-      return `<span class="film-details__genre">${genresList[index]}</span>`;
-    })
-    .join(``);
+  return genresList.map((value) => {
+    return `<span class="film-details__genre">${value}</span>`;
+  }).join(``);
 };
 
 const convertDateTime = (timestamp) => {
@@ -24,26 +21,23 @@ const convertDateTime = (timestamp) => {
 };
 
 const getCommentsListTemplate = (commentsList) => {
-  return new Array(commentsList.length)
-    .fill(undefined)
-    .map((value, index) => {
-      return `
+  return commentsList.map((value) => {
+    return `
         <li class="film-details__comment">
           <span class="film-details__comment-emoji">
-            <img src="./images/emoji/${commentsList[index].emoji}.png" width="55" height="55" alt="emoji-smile">
+            <img src="./images/emoji/${value.emoji}.png" width="55" height="55" alt="emoji-smile">
           </span>
           <div>
-            <p class="film-details__comment-text">${commentsList[index].message}</p>
+            <p class="film-details__comment-text">${value.message}</p>
             <p class="film-details__comment-info">
-              <span class="film-details__comment-author">${commentsList[index].author}</span>
-              <span class="film-details__comment-day">${convertDateTime(commentsList[index].dateTime)}</span>
+              <span class="film-details__comment-author">${value.author}</span>
+              <span class="film-details__comment-day">${convertDateTime(value.dateTime)}</span>
               <button class="film-details__comment-delete">Delete</button>
             </p>
           </div>
         </li>
       `;
-    })
-    .join(``);
+  }).join(``);
 };
 
 export const filmDetailsTemplate = (film) => {

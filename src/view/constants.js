@@ -14,8 +14,6 @@ const ORIGIN_TITLES = [
   `Popeye the Sailor Meets Sindbad the Sailor`
 ];
 
-const POSTER_FOLDER = `./images/posters/`;
-
 const POSTER_FILE_NAMES = [
   `made-for-each-other.png`,
   `popeye-meets-sinbad.png`,
@@ -169,7 +167,6 @@ const MAX_COMMENTS_COUNT = 5;
 export {
   TITLES,
   ORIGIN_TITLES,
-  POSTER_FOLDER,
   POSTER_FILE_NAMES,
   NAMES,
   MAX_WRITERS_COUNT,

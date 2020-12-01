@@ -11,13 +11,12 @@ const getReleaseDate = (creationDate) => {
 };
 
 const getGenresListTemplate = (genresList) => {
-  const list = [];
-
-  for (let genre of genresList) {
-    list.push(`<span class="film-details__genre">${genre}</span>`);
-  }
-
-  return list.join(``);
+  return new Array(genresList.length)
+    .fill(undefined)
+    .map(function (value, index) {
+      return `<span class="film-details__genre">${genresList[index]}</span>`;
+    })
+    .join(``);
 };
 
 const getCommentsListTemplate = (commentsList) => {

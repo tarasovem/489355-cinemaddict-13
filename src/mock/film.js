@@ -26,12 +26,11 @@ const getRandomComment = () => {
 
 const getRandomComments = (min, max) => {
   const randomAmount = getRandomInteger(min, max);
-  const result = new Array(randomAmount)
+  return new Array(randomAmount)
     .fill(undefined)
     .map(() => {
       return getRandomComment();
     });
-  return result;
 };
 
 export const generateFilm = () => {

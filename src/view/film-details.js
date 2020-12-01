@@ -1,13 +1,8 @@
 import dayjs from "dayjs";
-import {getMonthName, getFilmDuration} from "../mock/utils";
+import {getFilmDuration} from "../mock/utils";
 
 const getReleaseDate = (creationDate) => {
-  const dayjsObj = dayjs(creationDate);
-  const date = dayjsObj.date();
-  const month = dayjsObj.month() + 1;
-  const year = dayjsObj.year();
-
-  return `${date} ${getMonthName(month)} ${year}`;
+  return dayjs(creationDate).format(`DD MMMM YYYY`);
 };
 
 const getGenresListTemplate = (genresList) => {

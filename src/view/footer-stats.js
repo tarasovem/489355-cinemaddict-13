@@ -1,5 +1,3 @@
-export const footerStatsTemplate = (amount) => {
-  return `
-    <p>${amount.toLocaleString()} movies inside</p>
-  `;
+export const footerStatsTotal = (amount) => {
+  return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ` `);
 };

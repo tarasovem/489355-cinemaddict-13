@@ -16,7 +16,7 @@ const getRandomElementOfArray = (arr) => {
 const getRandomElementsOfArray = (maxAmount, arr) => {
   const elements = arr.slice();
   const randomAmount = getRandomInteger(1, maxAmount);
-  const result = new Array(randomAmount)
+  return new Array(randomAmount)
     .fill(undefined)
     .map(() => {
       const randomIndex = getRandomInteger(0, elements.length - 1);
@@ -24,8 +24,6 @@ const getRandomElementsOfArray = (maxAmount, arr) => {
 
       return item;
     });
-
-  return result;
 };
 
 const getRandomDateTime = (from) => {
@@ -45,8 +43,10 @@ const getMonthName = (monthIndex) => {
 };
 
 const getFilmDuration = (duration) => {
-  const minutes = duration % 60;
-  const hours = (duration - minutes) / 60;
+  const SECONDS_PER_MINUTE = 60;
+  const MINUTES_PER_HOUR = 60;
+  const minutes = duration % SECONDS_PER_MINUTE;
+  const hours = (duration - minutes) / MINUTES_PER_HOUR;
   return `${hours}h ${minutes}m`;
 };
 

@@ -19,13 +19,12 @@ const getGenresListTemplate = (genresList) => {
     .join(``);
 };
 
+const convertDateTime = (timestamp) => {
+  return dayjs(timestamp).format(`YYYY/MM/DD HH:mm`);
+};
+
 const getCommentsListTemplate = (commentsList) => {
   const list = [];
-  const convertDateTime = (timestamp) => {
-    const dayjsObj = dayjs(timestamp);
-    return `${dayjsObj.year()}/${dayjsObj.month() + 1}/${dayjsObj.date()} ${dayjsObj.hour()}:${dayjsObj.minute()}`;
-  };
-
   for (let comment of commentsList) {
     const template = `
       <li class="film-details__comment">

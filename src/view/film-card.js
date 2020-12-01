@@ -4,7 +4,7 @@ import {getFilmDuration} from '../mock/utils';
 const ACTIVE_CLASS = `film-card__controls-item--active`;
 
 const getYearOfCreation = (date) => {
-  return dayjs(date).year();
+  return dayjs(date).format(`YYYY`);
 };
 
 export const filmCardTemplate = (film) => {

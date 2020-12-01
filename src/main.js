@@ -15,8 +15,8 @@ const FILM_COUNT_PER_STEP = 5;
 const EXTRA_FILM_COUNT = 2;
 
 const filmsList = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
-const topRatedFilmsList = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
-const mostCommentedFilmsList = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
+const topRatedFilmsList = new Array(EXTRA_FILM_COUNT).fill(undefined).map(generateFilm);
+const mostCommentedFilmsList = new Array(EXTRA_FILM_COUNT).fill(undefined).map(generateFilm);
 
 const render = (container, template, place) => {
   container.insertAdjacentHTML(place, template);

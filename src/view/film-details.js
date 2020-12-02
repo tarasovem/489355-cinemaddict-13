@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import {getFilmDuration} from "../mock/utils";
+import {getFilmDuration} from "../utils";
 
 const getReleaseDate = (creationDate) => {
   return dayjs(creationDate).format(`DD MMMM YYYY`);

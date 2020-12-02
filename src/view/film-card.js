@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import {getFilmDuration} from '../mock/utils';
+import {getFilmDuration} from '../utils';
 
 const ACTIVE_CLASS = `film-card__controls-item--active`;
 

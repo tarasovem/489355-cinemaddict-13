@@ -1,8 +1,10 @@
+import {createElement} from "../utils";
+
 const getCount = (list, condition) => {
   return list.reduce((total, item) => total + Number(item[condition]), 0);
 };
 
-export const menuTemplate = (films) => {
+const createMenuTemplate = (films) => {
   return `<nav class="main-navigation">
     <div class="main-navigation__items">
       <a href="#all" class="main-navigation__item main-navigation__item--active">All movies</a>
@@ -19,3 +21,26 @@ export const menuTemplate = (films) => {
     <li><a href="#" class="sort__button">Sort by rating</a></li>
   </ul>`;
 };
+
+export default class SiteMenuView {
+  constructor(films) {
+    this._element = null;
+    this._films = films;
+  }
+
+  getTemplate() {
+    return createMenuTemplate(this._films);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

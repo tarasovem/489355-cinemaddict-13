@@ -14,6 +14,7 @@ import FilmDetailsView from "./view/film-details";
 const FILM_COUNT = 25;
 const FILM_COUNT_PER_STEP = 5;
 const EXTRA_FILM_COUNT = 2;
+const BODY = document.body;
 
 const films = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
 const topRatedFilmsList = new Array(EXTRA_FILM_COUNT).fill(undefined).map(generateFilm);
@@ -29,7 +30,6 @@ renderElement(mainElement, new FilmsView().getElement(), renderPosition.BEFOREEN
 const filmsElement = document.querySelector(`.films`);
 renderElement(filmsElement, new FilmsListView().getElement(), renderPosition.BEFOREEND);
 
-const BODY = document.body;
 const openFilmDetails = () => {
   BODY.classList.add(`hide-overflow`);
   BODY.appendChild(filmDetailsComponent.getElement());

@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import {getFilmDuration} from "../utils";
+import {createElement, getFilmDuration} from "../utils";
 
 const getReleaseDate = (creationDate) => {
   return dayjs(creationDate).format(`DD MMMM YYYY`);
@@ -35,7 +35,7 @@ const getCommentsListTemplate = (commentsList) => {
   }).join(``);
 };
 
-export const filmDetailsTemplate = (film) => {
+const createFilmDetailsTemplate = (film) => {
   const {ageRating, title, titleOriginal, rating, director, writers, actors, creationDateTime, duration, country, genres, description, isAddedToWatchlist, isWatched, isFavorite, comments} = film;
 
   return `<section class="film-details">
@@ -151,3 +151,26 @@ export const filmDetailsTemplate = (film) => {
 </section>
 `;
 };
+
+export default class FilmDetailsView {
+  constructor(film) {
+    this._element = null;
+    this._film = film;
+  }
+
+  getTemplate() {
+    return createFilmDetailsTemplate(this._film);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

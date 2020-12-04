@@ -29,11 +29,14 @@ renderElement(mainElement, new FilmsView().getElement(), renderPosition.BEFOREEN
 const filmsElement = document.querySelector(`.films`);
 renderElement(filmsElement, new FilmsListView().getElement(), renderPosition.BEFOREEND);
 
+const BODY = document.body;
 const openFilmDetails = () => {
-  document.body.appendChild(filmDetailsComponent.getElement());
+  BODY.classList.add(`hide-overflow`);
+  BODY.appendChild(filmDetailsComponent.getElement());
 };
 const closeFilmDetails = () => {
-  document.body.removeChild(filmDetailsComponent.getElement());
+  BODY.removeChild(filmDetailsComponent.getElement());
+  BODY.classList.remove(`hide-overflow`);
 };
 
 const filmsListContainerElement = document.querySelector(`.films-list__container`);

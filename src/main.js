@@ -9,6 +9,7 @@ import FooterStatsTotalView from "./view/footer-stats";
 import {generateFilm} from "./mock/film";
 import {renderElement, renderPosition} from "./utils";
 import SiteMenuView from "./view/menu";
+import FilmDetailsView from "./view/film-details";
 
 const FILM_COUNT = 25;
 const FILM_COUNT_PER_STEP = 5;
@@ -31,6 +32,16 @@ renderElement(filmsElement, new FilmsListView().getElement(), renderPosition.BEF
 const filmsListContainerElement = document.querySelector(`.films-list__container`);
 for (let i = 0; i < Math.min(films.length, FILM_COUNT_PER_STEP); i++) {
   renderElement(filmsListContainerElement, new FilmCardView(films[i]).getElement(), renderPosition.BEFOREEND);
+  const filmCardComponent = new FilmCardView(films[i]);
+  filmCardComponent.getElement().querySelector(`.film-card__poster`).addEventListener(`click`, () => {
+
+  });
+  filmCardComponent.getElement().querySelector(`.film-card__title`).addEventListener(`click`, () => {
+
+  });
+  filmCardComponent.getElement().querySelector(`.film-card__comments`).addEventListener(`click`, () => {
+
+  });
 }
 
 const filmsListElement = document.querySelector(`.films-list`);
@@ -69,3 +80,8 @@ for (let i = 0; i < EXTRA_FILM_COUNT; i++) {
 
 const footerStatistics = document.querySelector(`.footer__statistics`);
 renderElement(footerStatistics, new FooterStatsTotalView(FILM_COUNT).getElement(), renderPosition.BEFOREEND);
+
+const filmDetailsComponent = new FilmDetailsView(films[0]);
+filmDetailsComponent.getElement().querySelector(`.film-details__close-btn`).addEventListener(`click`, ()=> {
+
+});

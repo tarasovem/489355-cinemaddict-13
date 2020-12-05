@@ -14,7 +14,6 @@ import FilmDetailsView from "./view/film-details";
 const FILM_COUNT = 25;
 const FILM_COUNT_PER_STEP = 5;
 const EXTRA_FILM_COUNT = 2;
-const BODY = document.body;
 
 const films = new Array(FILM_COUNT).fill(undefined).map(generateFilm);
 const topRatedFilmsList = new Array(EXTRA_FILM_COUNT).fill(undefined).map(generateFilm);
@@ -31,12 +30,12 @@ const filmsElement = document.querySelector(`.films`);
 renderElement(filmsElement, new FilmsListView().getElement(), renderPosition.BEFOREEND);
 
 const openFilmDetails = () => {
-  BODY.classList.add(`hide-overflow`);
-  BODY.appendChild(filmDetailsComponent.getElement());
+  document.body.classList.add(`hide-overflow`);
+  document.body.appendChild(filmDetailsComponent.getElement());
 };
 const closeFilmDetails = () => {
-  BODY.removeChild(filmDetailsComponent.getElement());
-  BODY.classList.remove(`hide-overflow`);
+  document.body.removeChild(filmDetailsComponent.getElement());
+  document.body.classList.remove(`hide-overflow`);
 };
 
 const filmsListContainerElement = document.querySelector(`.films-list__container`);

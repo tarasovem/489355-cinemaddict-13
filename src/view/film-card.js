@@ -1,5 +1,5 @@
 import dayjs from "dayjs";
-import {getFilmDuration} from '../mock/utils';
+import {createElement, getFilmDuration} from '../utils';
 
 const ACTIVE_CLASS = `film-card__controls-item--active`;
 
@@ -7,7 +7,7 @@ const getYearOfCreation = (date) => {
   return dayjs(date).format(`YYYY`);
 };
 
-export const filmCardTemplate = (film) => {
+const createFilmCardTemplate = (film) => {
   const {title, rating, creationDateTime, duration, genres, posterFileName, description, comments, isAddedToWatchlist, isWatched, isFavorite} = film;
 
   return `<article class="film-card">
@@ -28,3 +28,26 @@ export const filmCardTemplate = (film) => {
     </div>
   </article>`;
 };
+
+export default class FilmCardView {
+  constructor(film) {
+    this._element = null;
+    this._film = film;
+  }
+
+  getTemplate() {
+    return createFilmCardTemplate(this._film);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

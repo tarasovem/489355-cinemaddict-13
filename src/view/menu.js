@@ -1,4 +1,4 @@
-import {createElement} from "../utils";
+import AbstractView from "./abstract";
 
 const getCount = (list, condition) => {
   return list.reduce((total, item) => total + Number(item[condition]), 0);
@@ -22,25 +22,13 @@ const createMenuTemplate = (films) => {
   </ul>`;
 };
 
-export default class SiteMenuView {
+export default class SiteMenu extends AbstractView {
   constructor(films) {
-    this._element = null;
+    super();
     this._films = films;
   }
 
   getTemplate() {
     return createMenuTemplate(this._films);
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

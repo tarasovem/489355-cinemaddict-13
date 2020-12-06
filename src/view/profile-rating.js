@@ -1,4 +1,4 @@
-import {createElement} from "../utils";
+import AbstractView from "./abstract";
 
 const createProfileRatingTemplate = () => {
   return `<section class="header__profile profile">
@@ -7,24 +7,8 @@ const createProfileRatingTemplate = () => {
   </section>`;
 };
 
-export default class ProfileRatingView {
-  constructor() {
-    this._element = null;
-  }
-
+export default class ProfileRating extends AbstractView {
   getTemplate() {
     return createProfileRatingTemplate();
-  }
-
-  getElement() {
-    if (!this._element) {
-      this._element = createElement(this.getTemplate());
-    }
-
-    return this._element;
-  }
-
-  removeElement() {
-    this._element = null;
   }
 }

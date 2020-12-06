@@ -1,6 +1,6 @@
-import AbstractView from "./abstract";
+import AbstractView from "./abstract.js";
 import dayjs from "dayjs";
-import {getFilmDuration} from '../utils';
+import {getFilmDuration} from '../utils/film.js';
 
 const ACTIVE_CLASS = `film-card__controls-item--active`;
 

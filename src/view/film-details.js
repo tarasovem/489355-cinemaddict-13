@@ -1,6 +1,6 @@
-import AbstractView from "./abstract";
+import AbstractView from "./abstract.js";
+import {getFilmDuration} from "../utils/film.js";
 import dayjs from "dayjs";
-import {getFilmDuration} from "../utils";
 
 const getReleaseDate = (creationDate) => {
   return dayjs(creationDate).format(`DD MMMM YYYY`);

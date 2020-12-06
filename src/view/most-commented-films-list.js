@@ -1,4 +1,4 @@
-import AbstractView from "./abstract";
+import AbstractView from "./abstract.js";
 
 const createMostCommentedFilmsListTemplate = () => {
   return `<section class="films-list films-list--extra">

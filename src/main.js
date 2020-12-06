@@ -8,7 +8,7 @@ import MostCommentedFilmsListView from "./view/most-commented-films-list";
 import FooterStatsTotalView from "./view/footer-stats";
 import SiteMenuView from "./view/menu";
 import FilmDetailsView from "./view/film-details";
-import {renderElement, renderPosition} from "./utils";
+import {renderElement, renderPosition} from "./utils/render.js";
 import {generateFilm} from "./mock/film";
 
 const FILM_COUNT = 25;

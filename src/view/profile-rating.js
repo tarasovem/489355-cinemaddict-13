@@ -1,4 +1,4 @@
-import AbstractView from "./abstract";
+import AbstractView from "./abstract.js";
 
 const createProfileRatingTemplate = () => {
   return `<section class="header__profile profile">

@@ -6,10 +6,10 @@ import ShowMoreButtonView from "./view/show-more-button";
 import TopRatedFilmsListView from "./view/top-rated-films-list";
 import MostCommentedFilmsListView from "./view/most-commented-films-list";
 import FooterStatsTotalView from "./view/footer-stats";
-import {generateFilm} from "./mock/film";
-import {renderElement, renderPosition} from "./utils";
 import SiteMenuView from "./view/menu";
 import FilmDetailsView from "./view/film-details";
+import {renderElement, renderPosition} from "./utils";
+import {generateFilm} from "./mock/film";
 
 const FILM_COUNT = 25;
 const FILM_COUNT_PER_STEP = 5;
@@ -54,7 +54,7 @@ for (let i = 0; i < Math.min(films.length, FILM_COUNT_PER_STEP); i++) {
 }
 
 const filmDetailsComponent = new FilmDetailsView(films[0]);
-filmDetailsComponent.getElement().querySelector(`.film-details__close-btn`).addEventListener(`click`, ()=> {
+filmDetailsComponent.setCloseClickHandler(() => {
   closeFilmDetails();
 });
 

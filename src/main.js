@@ -42,13 +42,7 @@ const filmsListContainerElement = document.querySelector(`.films-list__container
 for (let i = 0; i < Math.min(films.length, FILM_COUNT_PER_STEP); i++) {
   const filmCardComponent = new FilmCardView(films[i]);
   renderElement(filmsListContainerElement, filmCardComponent.getElement(), renderPosition.BEFOREEND);
-  filmCardComponent.getElement().querySelector(`.film-card__poster`).addEventListener(`click`, () => {
-    openFilmDetails();
-  });
-  filmCardComponent.getElement().querySelector(`.film-card__title`).addEventListener(`click`, () => {
-    openFilmDetails();
-  });
-  filmCardComponent.getElement().querySelector(`.film-card__comments`).addEventListener(`click`, () => {
+  filmCardComponent.setOpenClickHandler(() => {
     openFilmDetails();
   });
 }

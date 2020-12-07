@@ -6,10 +6,10 @@ import ShowMoreButtonView from "./view/show-more-button";
 import TopRatedFilmsListView from "./view/top-rated-films-list";
 import MostCommentedFilmsListView from "./view/most-commented-films-list";
 import FooterStatsTotalView from "./view/footer-stats";
-import {generateFilm} from "./mock/film";
-import {renderElement, renderPosition} from "./utils";
 import SiteMenuView from "./view/menu";
 import FilmDetailsView from "./view/film-details";
+import {renderElement, renderPosition} from "./utils/render.js";
+import {generateFilm} from "./mock/film";
 
 const FILM_COUNT = 25;
 const FILM_COUNT_PER_STEP = 5;
@@ -42,19 +42,13 @@ const filmsListContainerElement = document.querySelector(`.films-list__container
 for (let i = 0; i < Math.min(films.length, FILM_COUNT_PER_STEP); i++) {
   const filmCardComponent = new FilmCardView(films[i]);
   renderElement(filmsListContainerElement, filmCardComponent.getElement(), renderPosition.BEFOREEND);
-  filmCardComponent.getElement().querySelector(`.film-card__poster`).addEventListener(`click`, () => {
-    openFilmDetails();
-  });
-  filmCardComponent.getElement().querySelector(`.film-card__title`).addEventListener(`click`, () => {
-    openFilmDetails();
-  });
-  filmCardComponent.getElement().querySelector(`.film-card__comments`).addEventListener(`click`, () => {
+  filmCardComponent.setClickHandler(() => {
     openFilmDetails();
   });
 }
 
 const filmDetailsComponent = new FilmDetailsView(films[0]);
-filmDetailsComponent.getElement().querySelector(`.film-details__close-btn`).addEventListener(`click`, ()=> {
+filmDetailsComponent.setCloseHandler(() => {
   closeFilmDetails();
 });
 

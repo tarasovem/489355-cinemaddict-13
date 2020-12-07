@@ -1,5 +1,5 @@
-import {TITLES, ORIGIN_TITLES, POSTER_FILE_NAMES, NAMES, MAX_WRITERS_COUNT, MAX_ACTORS_COUNT, FIRST_FILM_DATE, COUNTRIES, MIN_DURATION, MAX_DURATION, GENRES, MAX_GENRES_COUNT, MIN_RATING, MAX_RATING, SENTENCES, MAX_SENTENCES, AGE_RATINGS, MESSAGES, EMOJIS, MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT} from '../view/constants.js';
-import {getRandomInteger, getRandomElementOfArray, getRandomElementsOfArray, getRandomDateTime} from '../utils.js';
+import {TITLES, ORIGIN_TITLES, POSTER_FILE_NAMES, NAMES, MAX_WRITERS_COUNT, MAX_ACTORS_COUNT, FIRST_FILM_DATE, COUNTRIES, MIN_DURATION, MAX_DURATION, GENRES, MAX_GENRES_COUNT, MIN_RATING, MAX_RATING, SENTENCES, MAX_SENTENCES, AGE_RATINGS, MESSAGES, EMOJIS, MIN_COMMENTS_COUNT, MAX_COMMENTS_COUNT} from './constants.js';
+import {getRandomInteger, getRandomElementOfArray, getRandomElementsOfArray, getRandomDateTime} from '../utils/common.js';
 import {nanoid} from 'nanoid';
 
 const getRandomDuration = (min, max) => {

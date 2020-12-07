@@ -1,4 +1,4 @@
-import AbstractView from "./abstract.js";
+import AbstractView from "./abstract-view.js";
 import {getFilmDuration} from "../utils/film.js";
 import dayjs from "dayjs";
 
@@ -166,11 +166,11 @@ export default class FilmDetails extends AbstractView {
 
   _closeClickHandler(evt) {
     evt.preventDefault();
-    this._callback.closeClick();
+    this._callbacks.closeClick();
   }
 
-  setCloseClickHandler(callback) {
-    this._callback.closeClick = callback;
+  setCloseHandler(callback) {
+    this._callbacks.closeClick = callback;
     this.getElement().querySelector(`.film-details__close-btn`)
       .addEventListener(`click`, this._closeClickHandler);
   }

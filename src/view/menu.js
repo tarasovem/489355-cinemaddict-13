@@ -1,4 +1,4 @@
-import AbstractView from "./abstract.js";
+import AbstractView from "./abstract-view.js";
 
 const getCount = (list, condition) => {
   return list.reduce((total, item) => total + Number(item[condition]), 0);

@@ -1,4 +1,4 @@
-import AbstractView from "./abstract.js";
+import AbstractView from "./abstract-view.js";
 import dayjs from "dayjs";
 import {getFilmDuration} from '../utils/film.js';
 
@@ -44,11 +44,11 @@ export default class FilmCard extends AbstractView {
 
   _openClickHandler(evt) {
     evt.preventDefault();
-    this._callback.openClick();
+    this._callbacks.openClick();
   }
 
-  setOpenClickHandler(callback) {
-    this._callback.openClick = callback;
+  setClickHandler(callback) {
+    this._callbacks.openClick = callback;
     this.getElement().querySelector(`.film-card__poster`).addEventListener(`click`, this._openClickHandler);
     this.getElement().querySelector(`.film-card__title`).addEventListener(`click`, this._openClickHandler);
     this.getElement().querySelector(`.film-card__comments`).addEventListener(`click`, this._openClickHandler);

@@ -1,4 +1,4 @@
-import AbstractView from "./abstract.js";
+import AbstractView from "./abstract-view.js";
 
 export const createFooterStatsTotalTemplate = (amount) => {
   return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ` `);
